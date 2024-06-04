@@ -34,7 +34,7 @@ USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 entity FSM2 is
 port (
 		clk,rst,in1 : in std_logic;
-		out1 			:out std_logic_vector(2 downto 0)
+		out1 	    :out std_logic_vector(2 downto 0)
 		);
 end FSM2;
 
@@ -63,32 +63,47 @@ begin
 	case pr_state is 
 		
 		when s0=> 
-		if in1='1' then nx_state<=s1; temp_out1<="001"; else 
-			nx_state<=s4; temp_out1<="101"; 
+		if in1='1' then nx_state<=s1; 
+			temp_out1<="001"; 
+		else 
+			nx_state<=s4; 
+			temp_out1<="101"; 
 		end if;
 		
 		
 		when s1=> 
-		if in1='1' then nx_state<= s4; temp_out1<="110"; else
-			nx_state<=s2; temp_out1<="100"; 
+		if in1='1' then nx_state<= s4; 
+			temp_out1<="110"; 
+		 else
+			nx_state<=s2; 
+			temp_out1<="100"; 
 		end if;
 		
 		
 		when s2=> 
-		if in1='1' then nx_state<= s3; temp_out1<="111"; else
-			nx_state<= s4; temp_out1<="011"; 
+		if in1='1' then nx_state<= s3; 
+			temp_out1<="111"; 
+		else
+			nx_state<= s4; 
+			temp_out1<="011"; 
 		end if; 
 		
 		
 		when s3=> 
-		if in1='1' then nx_state<= s1; temp_out1<="001"; else
-			nx_state<=s0; temp_out1<="000"; 
+		if in1='1' then nx_state<= s1; 
+			temp_out1<="001"; 
+		else
+			nx_state<=s0; 
+			temp_out1<="000"; 
 		end if;
 		
 		
 		when s4=> 
-		if in1='1' then nx_state<=s3; temp_out1<="110"; else
-			nx_state<=s0; temp_out1<="000"; 
+		if in1='1' then nx_state<=s3; 
+			temp_out1<="110"; 
+		else
+			nx_state<=s0; 
+			temp_out1<="000"; 
 		end if;
 		
 		when others=> nx_state<=s0; temp_out1<="000"; 
